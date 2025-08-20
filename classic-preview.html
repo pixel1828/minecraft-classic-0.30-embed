@@ -1,1 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Classic WebGL Iframe Keyboard Fix</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #111;
+    }
+    iframe {
+      border: none;
+      width: 960px;
+      height: 720px;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="gameFrame"
+          src="https://pixel1828.github.io/Classic-WebGL-Pages/Classic_1_Original.html"
+          tabindex="0"
+          allow="fullscreen; pointer-lock"
+          allowfullscreen>
+  </iframe>
 
+  <script>
+    const frame = document.getElementById("gameFrame");
+
+    // Ensure iframe can take focus
+    frame.addEventListener("mousedown", () => frame.focus());
+    frame.addEventListener("touchstart", () => frame.focus(), { passive:true });
+
+    // Try to focus iframe after load
+    frame.addEventListener("load", () => frame.focus());
+  </script>
+</body>
+</html>
